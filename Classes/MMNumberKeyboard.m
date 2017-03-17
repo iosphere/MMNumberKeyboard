@@ -424,6 +424,35 @@ static const CGFloat MMNumberKeyboardPadSpacing = 8.0f;
     }
 }
 
+- (void)setReturnKeyFont:(UIFont *)returnKeyFont
+{
+    if ([_returnKeyFont isEqual:returnKeyFont]) {
+        return;
+    }
+
+    _returnKeyFont = returnKeyFont;
+
+    _MMNumberKeyboardButton *button = self.buttonDictionary[@(MMNumberKeyboardButtonDone)];
+    [button.titleLabel setFont:returnKeyFont];
+}
+
+- (void)setKeypadFont:(UIFont *)keypadFont
+{
+    if ([_keypadFont isEqual:keypadFont]) {
+        return;
+    }
+
+    _keypadFont = keypadFont;
+
+    const NSInteger numberMin = MMNumberKeyboardButtonNumberMin;
+    const NSInteger numberMax = MMNumberKeyboardButtonNumberMax;
+
+    for (MMNumberKeyboardButton key = numberMin; key < numberMax; key++) {
+        _MMNumberKeyboardButton *button = self.buttonDictionary[@(key)];
+        [button.titleLabel setFont:keypadFont];
+    }
+}
+
 #pragma mark - Layout.
 
 NS_INLINE CGRect MMButtonRectMake(CGRect rect, CGRect contentRect, UIUserInterfaceIdiom interfaceIdiom){
