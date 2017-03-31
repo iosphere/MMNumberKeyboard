@@ -138,4 +138,18 @@ typedef NS_ENUM(NSUInteger, MMNumberKeyboardButtonStyle) {
  */
 @property (assign, nonatomic) MMNumberKeyboardButtonStyle returnKeyButtonStyle;
 
+/**
+ *  The font used for the return key button.
+ *
+ *  @note The default value is the system font of size 17.
+ */
+@property (nonatomic) UIFont *returnKeyFont;
+
+/**
+ *  The font used for the numbers and separators.
+ *
+ *  @note The default value is the system font (light) of size 28.
+ */
+@property (nonatomic) UIFont *keypadFont;
+
 @end
